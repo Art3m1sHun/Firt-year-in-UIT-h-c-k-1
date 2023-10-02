@@ -1,0 +1,413 @@
+Đề bài: Khi thi đại học, hầu hết các môn làm bài dưới dạng trắc nghiệm. Khi làm bài trắc nghiệm đôi khi kết quả có những con số rất lẻ ví dụ như đánh đúng 29/60 thì sẽ được 4,8333 điểm. Trong khi đó quy chế thi đại học yêu cầu điểm các môn chỉ được giữ số lẻ đến từng 1/4. Tức là điểm phải có thể viết ở dạng a+b*(1/4) với a, b là hai số nguyên. Các điểm số quá lẻ như 4,83 phải được làm tròn đến số lẻ 1/4 gần nhất. Một trong những công thức phổ biến là lấy 4,83333 nhân 4. Sau đó làm tròn đến hàng đơn vị theo nguyên tắc 
+
+#include <iostream>
+#include <cmath>
+
+
+int main()
+{
+    double a;
+    int n;
+    std::cin >> a >> n;
+	a = round(a*n);
+	a /=n;
+	std::cout.precision(10);
+	std::cout<<a;
+	return 0;
+}
+==========================================================================================
+Đề bài: Viết chương trình nhập vào 3 số thực a, b và c. In ra các số theo thứ tự tăng dần.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+	double a, b, c;
+	cin>>a;
+	cin>>b;
+	cin>>c;
+	if ((a < b) && (a < c))  {
+		if ( b < c) cout<<a<<" "<<b<<" "<<c;
+		else cout<<a<<" "<<c<<" "<<b;
+	}
+	else if ((a < b) && (a > c)) cout<<c<<" "<<a<<" "<<b;
+	else if ((a > b) && (a < c)) cout<<b<<" "<<a<<" "<<c;
+	else {
+		if (b < c) cout<<b<<" "<<c<<" "<<a;
+		else cout<<c<<" "<<b<<" "<<a;
+	}
+	return 0;
+}
+==========================================================================================
+Đề bài: 
+Viết chương trình nhập vào 3 cạnh của một tam giác. Cho biết đó là loại tam giác gì?
+Biết có 5 loại: không phải tam giác, tam giác thường, cân, đều, vuông.
+Nếu là tam giác tính diện tích tam giác.
+
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+
+using namespace std;
+
+int main() {
+	float a,b,c;
+	float s,p;
+	cin>>a;
+	cin>>b;
+	cin>>c;
+	cout<<setprecision(2);
+	cout<<fixed;
+	p = (a+b+c)/2;
+	s = sqrt(p*(p - a)*(p - b)*(p - c));
+	if ((a + b > c) && (a + c > b) && ( b + c > a)) {
+		if ((a == b) && (b == c)) { cout<<"Tam giac deu, "<<"dien tich = "<<s;
+		}
+		else if ((a == b) || (a == c) || (b == c)){cout<<"Tam giac can, "<<"dien tich = "<<s;
+		}
+		else if ((a*a + b*b == c*c) || (a*a + c*c == b*b) || (c*c + b*b == a*a)){cout<<"Tam giac vuong, "<<"dien tich = "<<s;
+		}
+		else if ((a + b > c) || (a + c > b) || (b + c > a)) {cout<<"Tam giac thuong, "<<"dien tich = "<<s;
+		}
+	}else cout<<"Khong phai tam giac";
+}
+=============================================================================================
+Đề bài: Viết chương trình nhập vào ngày tháng năm. Kiểm tra ngày tháng năm nhập vào có hợp lệ hay không?
+Giả sử:
+·       năm hợp lệ: năm  >  0, 
+·       tháng 2 có 28 ngày (năm không nhuận), hoặc 29 ngày (năm nhuận),
+·       năm nhuận: chia hết cho 4 nhưng không chia hết cho 100, hoặc chia hết cho 400,
+·       tháng 4, 6, 9, 11 có 30 ngày,
+·       Các tháng còn lại có 31 ngày.
+Lưu ý: Các bạn ưu tiên kiểm tra theo thứ tự: năm, tháng, ngày.
+
+#include <iostream>
+#include <stdio.h>
+
+using namespace std;
+
+int main ()
+{
+    int ngay, thang, nam, ngaymax;
+    cin>>ngay>>thang>>nam;
+    if (nam<= 0)
+    {
+        cout<<"Nam khong hop le.";
+    }
+    else if ((thang <= 0) || (thang > 12)) cout<<"Thang khong hop le.";
+    else
+    {
+        switch (thang)
+        {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+              ngaymax=31;
+              break;
+            case 2:
+                if ((nam%4==0 && nam%100!=0) || (nam%400==0))
+                    ngaymax=29;
+                else 
+                    ngaymax=28;
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                ngaymax=30;
+                break;
+        }
+        if ((ngay > 0) && (ngay <=ngaymax))
+        {
+            cout<<ngay<<"/"<<thang<<"/"<<nam<<" la ngay hop le.";
+        }
+        else
+        {
+            cout<<ngay<<"/"<<thang<<"/"<<nam<<" la ngay khong hop le.";
+        }
+    }
+}
+======================================================================================
+Đề bài: Viết chương trình tính Kiểm tra một số có phải là số nguyên tố hay không.
+Số nguyên tố là số tự nhiên chỉ có hai ước số dương phân biệt là 1 và chính nó, nghĩa là chỉ chia hết cho 1 và chính nó. Các số có nhiều hơn 2 ước số dương được gọi là hợp số.
+Do số 1 chỉ có một (1) ước số dương là chính nó, nên số 1 không phải là số nguyên tố và cũng không phải là hợp số.
+
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main() { 
+    int n, count;
+    cin>>n;
+    if (n == 1) cout<<"-1";
+    else if (n > 1) {
+    count = 0;
+    for(int i = 2 ; i <= sqrt(n); i++){
+        if(n % i == 0){
+            count++;
+        }
+    }
+}
+    if((count == 0) && (n != 1)){
+        cout <<1;
+    }else if ((count != 0) && (n != 1)){
+        cout <<0;
+    }
+}
+========================================================================================
+Đề bài:
+Bạn đang đứng trước một cái giếng ma thuật, trên đó có ghi 2 số nguyên dương a và b. Mỗi lần ném một viên sỏi xuống giếng, nó sẽ trả về cho bạn a*b đồng tiền vàng, sau đó a và b sẽ tăng lên 1. Vậy nếu bạn có n viên sỏi thì sẽ kiếm được bao nhiêu đồng tiền vàng?
+
+Ví dụ: Cho a = 1, b = 2 và n = 2, output của bài toán là 8, vì sau khi ném viên sỏi thứ nhất bạn sẽ có được 2 đồng tiền vàng, sau đó a tăng lên là 2 và b tăng lên là 3, khi ném đến viên thứ 2 thì cái giếng sẽ trả về cho bạn thêm 6 đồng tiền vàng nữa, như vậy cả thảy sẽ được 8 đồng.
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	int a,b,n,s;
+	cin>>a>>b>>n;
+	s = 0;
+	for (int i = 1; i <= n; i++) {
+		s = s + a*b;
+		a++;
+		b++;
+	}
+cout<<s;
+return 0;
+}
+=======================================================================================
+Đề bài:
+Tính tổng các chữ số của số nguyên dương n.
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+  int so;
+  int soTemp;
+  int tong = 0;
+  cin >> so;
+  soTemp = so;
+  if (so > 0){
+  while (soTemp != 0) {
+    tong += soTemp % 10;
+    soTemp /= 10;
+  }
+}
+  cout <<tong;
+  return 0;
+}
+=======================================================================================
+Đề bài: Viết chương trình kiểm tra số đối xứng (palindrome).
+Định nghĩa: Số đối xứng là một số tự nhiên mà khi đảo ngược các chữ số vẫn không thay đổi, ví dụ: số 16461 là số đối xứng.
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+   int num, reverse_num=0, remainder,temp;
+   cin>>num;
+   temp=num;
+   while(temp != 0) {
+      remainder = temp % 10;
+      reverse_num= reverse_num * 10 + remainder;
+      temp /= 10;
+   } 
+   if(reverse_num == num) 
+      cout<<"true";
+   else
+      cout<<"false";
+  return 0;
+}
+=========================================================================================
+Đề bài: Viết chương trình nhập 2 ký tự c1, c2 (giả sử c1, c2 là các ký tự viết thường nằm trong khoảng từ 'a' đến 'z') và số nguyên x (65 ≤ x ≤ 90). In ra màn hình:
+Mã ASCII của ký tự c1 và c2
+Khoảng cách giữa 2 ký tự c1 và c2 (tính khoảng cách dựa trên thứ tự trong bảng chữ cái)
+Dạng viết hoa của ký tự c1
+Ký tự có mã ASCII là x
+
+#include <iostream>
+#include <cmath>
+#include <cctype>
+
+using namespace std;
+
+char upper(char chr){
+    if('a' <= chr && chr <= 'z'){
+        chr = chr - ((int)('a') - (int)('A'));
+    }
+    return chr;
+}
+
+int main() {
+	char kitu1, kitu2;
+	int x;
+	cin>>kitu1>>kitu2>>x;
+	cout<<"Ma ASCII cua ky tu '"<<kitu1<<"', '"<<kitu2<<"' lan luot la "<< (int)kitu1<<" va "<<(int)kitu2<<endl;
+	cout<<"Khoang cach giua hai ky tu '"<<kitu1<<"', '"<<kitu2<<"' la "<<abs((int) kitu1 - (int)kitu2)<<endl;
+	cout<<"Dang viet hoa cua ky tu '"<<kitu1<<"' la '"<<upper(kitu1)<<"'"<<endl;
+    cout<<x<<" la ma ASCII cua ky tu '"<<(char) x<<"'";
+	return 0;
+	
+}
+===============================================================================
+ Viết chương trình tính tổng
+S1 = 1 + 2^2 + ... n^n
+s2 = 1 + 1x2 + ... + 1x2x3x...xn
+s3 = 1 + 1/(1 + 2 + ... + 1/(1 + 2 + ... + n)
+
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+double tong1(int n) {
+	double s1 = 0;
+	for (int i = 1; i <= n; i++){
+	s1 += pow(i,i);}
+	return s1;
+}
+
+double tong2(int n) {
+	double s2 = 0 ;
+	int tich = 1;
+	for(int i = 1; i <= n; i++){
+		tich *=i;
+		s2 += tich;
+	}
+	return s2;
+}
+
+double tong3(int n){
+	double s3 = 0;
+	int tong = 0;
+	for(int i = 1; i<= n; i++){
+		tong += i;
+		s3 += (1.0/tong);
+		}
+	return s3;
+}
+
+int main() {
+	int n;
+	cin>>n;
+	if ( n > 0) cout<<tong1(n)<<endl;
+	if ( n > 0) cout<<tong2(n)<<endl;
+	if ( n > 0) cout<<tong3(n);
+	
+return 0;
+}
+===============================================================================
+Tính số Pi bằng công thức LeiBniz
+
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+double sopi(int n) {
+    double pi = 0;
+    double tu = 1.0; // Ban đầu, giá trị của (-1)^0 là 1
+    double mau = 0;
+
+    for (int i = 0; i <= n; i++) {
+        mau = (2.0 * i) + 1.0;
+        pi += (tu / mau);
+
+        // Đảo dấu của tu cho vòng lặp tiếp theo
+        tu = -tu;
+    }
+
+    return pi * 4.0; // Nhân với 4 để xấp xỉ giá trị Pi
+}
+
+int main() {
+    int n;
+    cout << "Nhập n: ";
+    cin >> n;
+    cout << "Giá trị xấp xỉ của Pi: " << sopi(n) << endl;
+    return 0;
+}
+===============================================================================
+Các số nguyên tố sinh đôi (twin prime) là các số nguyên tố mà khoảng cách giữa chúng là 2. Hãy in tất cả cặp số sinh đôi nhỏ hơn một số nguyên dương cho trước (số nguyên dương này < 1000).
+
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+bool isPrime(int number) {
+    if (number <= 1) {
+        return false;
+    }
+    for (int i = 2; i <= sqrt(number); i++) {
+        if (number % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+void findTwinPrimes(int n) {
+	
+}
+
+int main() {
+    int n;
+    int count = 0;
+    cin >> n;
+    for (int i = 2; i < n - 1; i++) {
+        if (isPrime(i) && isPrime(i + 2)) {
+            cout << i << ", " << i + 2 << endl;
+            count += 1;   
+        } 
+    }
+    cout<<"Tong: "<<count<<" cap so sinh doi < "<<n;
+    return 0;
+}
+===============================================================================
+hành phố quyết định chặt hạ hết n cây xanh hiện có trong thành phố để trồng chỉ một loại cây mới. Nhiệm vụ được giao cho Công ty Cây xanh thành phố. Do hạn chế về thiết bị Công ty chỉ tổ chức được 2 đội đốn hạ cây. Đội I hạ được a cây mỗi ngày, nhưng cứ mối ngày thứ k thì phải nghỉ để bảo dưỡng kỹ thuật, tức là đội I sẽ nghỉ vào các ngày k, 2k, 3k, . . . Đội II hạ được b cây mỗi ngày, nhưng cứ mỗi ngày thứ m thì phải nghỉ để bảo dưỡng kỹ thuật, tức là đội II sẽ nghỉ vào các ngày m, 2m, 3m, . . . Ở ngày nghỉ, số cây chặt hạ của đội sẽ là 0. Cả hai đội bắt đầu công việc vào cùng một ngày và làm việc song song với nhau.
+ông việc trồng cây mới sẽ bắt đầu sau khi toàn bộ cây cũ đã bị đốn hạ.
+Hãy xác định sau bao nhiêu ngày thì có thể bắt đầu việc trồng mới cây.
+
+#include <iostream>
+#include <climits>
+using namespace std;
+
+typedef unsigned long long ll;
+
+ll a, k, b, m, n;
+
+ll numTreesCut(ll days)
+{
+    return (days - days / k) * a + (days - days / m) * b;
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+    cin >> a >> k >> b >> m >> n;
+
+    ll left = 1, right = n / min(a, b), mid, treesCut;
+
+    while (left < right)
+    {
+        mid = left + ((right - left) >> 1);
+        treesCut = numTreesCut(mid);
+
+        if (treesCut >= n)
+            right = mid;
+        else
+            left = mid + 1;
+    }
+    cout << left << endl;
+    return 0;
+}
