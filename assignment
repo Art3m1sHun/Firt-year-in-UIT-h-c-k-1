@@ -135,7 +135,8 @@ int main ()
 }
 ======================================================================================
 Đề bài: Viết chương trình tính Kiểm tra một số có phải là số nguyên tố hay không.
-Số nguyên tố là số tự nhiên chỉ có hai ước số dương phân biệt là 1 và chính nó, nghĩa là chỉ chia hết cho 1 và chính nó. Các số có nhiều hơn 2 ước số dương được gọi là hợp số.
+Số nguyên tố là số tự nhiên chỉ có hai ước số dương phân biệt là 1 và chính nó, nghĩa là chỉ chia hết cho 1 và chính nó. 
+Các số có nhiều hơn 2 ước số dương được gọi là hợp số.
 Do số 1 chỉ có một (1) ước số dương là chính nó, nên số 1 không phải là số nguyên tố và cũng không phải là hợp số.
 
 #include <iostream>
@@ -163,7 +164,9 @@ int main() {
 }
 ========================================================================================
 Đề bài:
-Bạn đang đứng trước một cái giếng ma thuật, trên đó có ghi 2 số nguyên dương a và b. Mỗi lần ném một viên sỏi xuống giếng, nó sẽ trả về cho bạn a*b đồng tiền vàng, sau đó a và b sẽ tăng lên 1. Vậy nếu bạn có n viên sỏi thì sẽ kiếm được bao nhiêu đồng tiền vàng?
+Bạn đang đứng trước một cái giếng ma thuật, trên đó có ghi 2 số nguyên dương a và b.
+Mỗi lần ném một viên sỏi xuống giếng, nó sẽ trả về cho bạn a*b đồng tiền vàng, sau đó a và b sẽ tăng lên 1.
+Vậy nếu bạn có n viên sỏi thì sẽ kiếm được bao nhiêu đồng tiền vàng?
 
 Ví dụ: Cho a = 1, b = 2 và n = 2, output của bài toán là 8, vì sau khi ném viên sỏi thứ nhất bạn sẽ có được 2 đồng tiền vàng, sau đó a tăng lên là 2 và b tăng lên là 3, khi ném đến viên thứ 2 thì cái giếng sẽ trả về cho bạn thêm 6 đồng tiền vàng nữa, như vậy cả thảy sẽ được 8 đồng.
 
@@ -230,7 +233,8 @@ int main() {
   return 0;
 }
 =========================================================================================
-Đề bài: Viết chương trình nhập 2 ký tự c1, c2 (giả sử c1, c2 là các ký tự viết thường nằm trong khoảng từ 'a' đến 'z') và số nguyên x (65 ≤ x ≤ 90). In ra màn hình:
+Đề bài: Viết chương trình nhập 2 ký tự c1, c2 (giả sử c1, c2 là các ký tự viết thường nằm trong khoảng từ 'a' đến 'z') và số nguyên x (65 ≤ x ≤ 90). 
+In ra màn hình:
 Mã ASCII của ký tự c1 và c2
 Khoảng cách giữa 2 ký tự c1 và c2 (tính khoảng cách dựa trên thứ tự trong bảng chữ cái)
 Dạng viết hoa của ký tự c1
@@ -339,7 +343,8 @@ int main() {
     return 0;
 }
 ===============================================================================
-Các số nguyên tố sinh đôi (twin prime) là các số nguyên tố mà khoảng cách giữa chúng là 2. Hãy in tất cả cặp số sinh đôi nhỏ hơn một số nguyên dương cho trước (số nguyên dương này < 1000).
+Các số nguyên tố sinh đôi (twin prime) là các số nguyên tố mà khoảng cách giữa chúng là 2.
+Hãy in tất cả cặp số sinh đôi nhỏ hơn một số nguyên dương cho trước (số nguyên dương này < 1000).
 
 #include <iostream>
 #include <cmath>
@@ -376,7 +381,11 @@ int main() {
     return 0;
 }
 ===============================================================================
-hành phố quyết định chặt hạ hết n cây xanh hiện có trong thành phố để trồng chỉ một loại cây mới. Nhiệm vụ được giao cho Công ty Cây xanh thành phố. Do hạn chế về thiết bị Công ty chỉ tổ chức được 2 đội đốn hạ cây. Đội I hạ được a cây mỗi ngày, nhưng cứ mối ngày thứ k thì phải nghỉ để bảo dưỡng kỹ thuật, tức là đội I sẽ nghỉ vào các ngày k, 2k, 3k, . . . Đội II hạ được b cây mỗi ngày, nhưng cứ mỗi ngày thứ m thì phải nghỉ để bảo dưỡng kỹ thuật, tức là đội II sẽ nghỉ vào các ngày m, 2m, 3m, . . . Ở ngày nghỉ, số cây chặt hạ của đội sẽ là 0. Cả hai đội bắt đầu công việc vào cùng một ngày và làm việc song song với nhau.
+hành phố quyết định chặt hạ hết n cây xanh hiện có trong thành phố để trồng chỉ một loại cây mới. 
+Nhiệm vụ được giao cho Công ty Cây xanh thành phố. Do hạn chế về thiết bị Công ty chỉ tổ chức được 2 đội đốn hạ cây.
+Đội I hạ được a cây mỗi ngày, nhưng cứ mối ngày thứ k thì phải nghỉ để bảo dưỡng kỹ thuật, tức là đội I sẽ nghỉ vào các ngày k, 2k, 3k, . . .
+Đội II hạ được b cây mỗi ngày, nhưng cứ mỗi ngày thứ m thì phải nghỉ để bảo dưỡng kỹ thuật, tức là đội II sẽ nghỉ vào các ngày m, 2m, 3m, . . .
+Ở ngày nghỉ, số cây chặt hạ của đội sẽ là 0. Cả hai đội bắt đầu công việc vào cùng một ngày và làm việc song song với nhau.
 ông việc trồng cây mới sẽ bắt đầu sau khi toàn bộ cây cũ đã bị đốn hạ.
 Hãy xác định sau bao nhiêu ngày thì có thể bắt đầu việc trồng mới cây.
 
