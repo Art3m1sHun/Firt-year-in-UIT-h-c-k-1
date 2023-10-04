@@ -1,0 +1,45 @@
+
+Viết hàm tính tổng tất cả các ước số chính phương của một số nguyên dương N. (không dùng thư viện cmath)
+
+#include <iostream>
+
+using namespace std;
+int Input() {
+	int n;
+	cin>>n;
+	return n;
+}
+
+bool isPerfectSquare(int num) {
+    int i = 1;
+    while (i * i <= num) {
+        if (i * i == num) {
+            return true;
+        }
+        i++;
+    }
+    return false;
+}
+===================================================================
+(dùng cmath)
+
+bool isPerfectSquare(int num) {
+    int squareRoot = sqrt(num);
+    return squareRoot * squareRoot == num;
+}
+====================================================================
+int sum_all_square(int N) {
+  
+    int sum = 0;
+    for (int i = 1; i <= N; ++i) {
+        if (N % i == 0 && isPerfectSquare(i)) {
+            sum += i;
+        }
+    }
+    return sum;
+}
+int main() {
+	int n;
+	n=Input();
+	cout << sum_even_divisor(n);
+}
