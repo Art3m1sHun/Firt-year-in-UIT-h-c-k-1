@@ -1,0 +1,28 @@
+
+Đề bài: Viết chương trình tính Kiểm tra một số có phải là số nguyên tố hay không.
+Số nguyên tố là số tự nhiên chỉ có hai ước số dương phân biệt là 1 và chính nó, nghĩa là chỉ chia hết cho 1 và chính nó. Các số có nhiều hơn 2 ước số dương được gọi là hợp số.
+Do số 1 chỉ có một (1) ước số dương là chính nó, nên số 1 không phải là số nguyên tố và cũng không phải là hợp số.
+
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main() { 
+    int n, count;
+    cin>>n;
+    if (n == 1) cout<<"-1";
+    else if (n > 1) {
+    count = 0;
+    for(int i = 2 ; i <= sqrt(n); i++){
+        if(n % i == 0){
+            count++;
+        }
+    }
+}
+    if((count == 0) && (n != 1)){
+        cout <<1;
+    }else if ((count != 0) && (n != 1)){
+        cout <<0;
+    }
+}
