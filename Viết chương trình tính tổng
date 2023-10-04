@@ -1,0 +1,46 @@
+Viết chương trình tính tổng
+S1 = 1 + 2^2 + ... n^n
+s2 = 1 + 1x2 + ... + 1x2x3x...xn
+s3 = 1 + 1/(1 + 2 + ... + 1/(1 + 2 + ... + n)
+
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+double tong1(int n) {
+	double s1 = 0;
+	for (int i = 1; i <= n; i++){
+	s1 += pow(i,i);}
+	return s1;
+}
+
+double tong2(int n) {
+	double s2 = 0 ;
+	int tich = 1;
+	for(int i = 1; i <= n; i++){
+		tich *=i;
+		s2 += tich;
+	}
+	return s2;
+}
+
+double tong3(int n){
+	double s3 = 0;
+	int tong = 0;
+	for(int i = 1; i<= n; i++){
+		tong += i;
+		s3 += (1.0/tong);
+		}
+	return s3;
+}
+
+int main() {
+	int n;
+	cin>>n;
+	if ( n > 0) cout<<tong1(n)<<endl;
+	if ( n > 0) cout<<tong2(n)<<endl;
+	if ( n > 0) cout<<tong3(n);
+	
+return 0;
+}
