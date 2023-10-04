@@ -1,0 +1,59 @@
+Đề bài: Viết chương trình nhập vào ngày tháng năm. Kiểm tra ngày tháng năm nhập vào có hợp lệ hay không?
+Giả sử:
+·       năm hợp lệ: năm  >  0, 
+·       tháng 2 có 28 ngày (năm không nhuận), hoặc 29 ngày (năm nhuận),
+·       năm nhuận: chia hết cho 4 nhưng không chia hết cho 100, hoặc chia hết cho 400,
+·       tháng 4, 6, 9, 11 có 30 ngày,
+·       Các tháng còn lại có 31 ngày.
+Lưu ý: Các bạn ưu tiên kiểm tra theo thứ tự: năm, tháng, ngày.
+
+#include <iostream>
+#include <stdio.h>
+
+using namespace std;
+
+int main ()
+{
+    int ngay, thang, nam, ngaymax;
+    cin>>ngay>>thang>>nam;
+    if (nam<= 0)
+    {
+        cout<<"Nam khong hop le.";
+    }
+    else if ((thang <= 0) || (thang > 12)) cout<<"Thang khong hop le.";
+    else
+    {
+        switch (thang)
+        {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+              ngaymax=31;
+              break;
+            case 2:
+                if ((nam%4==0 && nam%100!=0) || (nam%400==0))
+                    ngaymax=29;
+                else 
+                    ngaymax=28;
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                ngaymax=30;
+                break;
+        }
+        if ((ngay > 0) && (ngay <=ngaymax))
+        {
+            cout<<ngay<<"/"<<thang<<"/"<<nam<<" la ngay hop le.";
+        }
+        else
+        {
+            cout<<ngay<<"/"<<thang<<"/"<<nam<<" la ngay khong hop le.";
+        }
+    }
+}
