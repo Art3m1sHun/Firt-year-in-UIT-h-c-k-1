@@ -1,0 +1,32 @@
+Đề bài: 
+Viết chương trình nhập vào 3 cạnh của một tam giác. Cho biết đó là loại tam giác gì?
+Biết có 5 loại: không phải tam giác, tam giác thường, cân, đều, vuông.
+Nếu là tam giác tính diện tích tam giác.
+
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+
+using namespace std;
+
+int main() {
+	float a,b,c;
+	float s,p;
+	cin>>a;
+	cin>>b;
+	cin>>c;
+	cout<<setprecision(2);
+	cout<<fixed;
+	p = (a+b+c)/2;
+	s = sqrt(p*(p - a)*(p - b)*(p - c));
+	if ((a + b > c) && (a + c > b) && ( b + c > a)) {
+		if ((a == b) && (b == c)) { cout<<"Tam giac deu, "<<"dien tich = "<<s;
+		}
+		else if ((a == b) || (a == c) || (b == c)){cout<<"Tam giac can, "<<"dien tich = "<<s;
+		}
+		else if ((a*a + b*b == c*c) || (a*a + c*c == b*b) || (c*c + b*b == a*a)){cout<<"Tam giac vuong, "<<"dien tich = "<<s;
+		}
+		else if ((a + b > c) || (a + c > b) || (b + c > a)) {cout<<"Tam giac thuong, "<<"dien tich = "<<s;
+		}
+	}else cout<<"Khong phai tam giac";
+}
