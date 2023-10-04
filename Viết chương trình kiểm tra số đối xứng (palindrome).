@@ -1,0 +1,22 @@
+Đề bài: Viết chương trình kiểm tra số đối xứng (palindrome).
+Định nghĩa: Số đối xứng là một số tự nhiên mà khi đảo ngược các chữ số vẫn không thay đổi, ví dụ: số 16461 là số đối xứng.
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+   int num, reverse_num=0, remainder,temp;
+   cin>>num;
+   temp=num;
+   while(temp != 0) {
+      remainder = temp % 10;
+      reverse_num= reverse_num * 10 + remainder;
+      temp /= 10;
+   } 
+   if(reverse_num == num) 
+      cout<<"true";
+   else
+      cout<<"false";
+  return 0;
+}
