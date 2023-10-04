@@ -1,0 +1,30 @@
+Đề bài: Viết chương trình nhập 2 ký tự c1, c2 (giả sử c1, c2 là các ký tự viết thường nằm trong khoảng từ 'a' đến 'z') và số nguyên x (65 ≤ x ≤ 90). In ra màn hình:
+Mã ASCII của ký tự c1 và c2
+Khoảng cách giữa 2 ký tự c1 và c2 (tính khoảng cách dựa trên thứ tự trong bảng chữ cái)
+Dạng viết hoa của ký tự c1
+Ký tự có mã ASCII là x
+
+#include <iostream>
+#include <cmath>
+#include <cctype>
+
+using namespace std;
+
+char upper(char chr){
+    if('a' <= chr && chr <= 'z'){
+        chr = chr - ((int)('a') - (int)('A'));
+    }
+    return chr;
+}
+
+int main() {
+	char kitu1, kitu2;
+	int x;
+	cin>>kitu1>>kitu2>>x;
+	cout<<"Ma ASCII cua ky tu '"<<kitu1<<"', '"<<kitu2<<"' lan luot la "<< (int)kitu1<<" va "<<(int)kitu2<<endl;
+	cout<<"Khoang cach giua hai ky tu '"<<kitu1<<"', '"<<kitu2<<"' la "<<abs((int) kitu1 - (int)kitu2)<<endl;
+	cout<<"Dang viet hoa cua ky tu '"<<kitu1<<"' la '"<<upper(kitu1)<<"'"<<endl;
+    cout<<x<<" la ma ASCII cua ky tu '"<<(char) x<<"'";
+	return 0;
+	
+}
