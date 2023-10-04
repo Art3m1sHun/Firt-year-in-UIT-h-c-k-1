@@ -1,0 +1,30 @@
+Tính số Pi bằng công thức LeiBniz
+
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+double sopi(int n) {
+    double pi = 0;
+    double tu = 1.0; // Ban đầu, giá trị của (-1)^0 là 1
+    double mau = 0;
+
+    for (int i = 0; i <= n; i++) {
+        mau = (2.0 * i) + 1.0;
+        pi += (tu / mau);
+
+        // Đảo dấu của tu cho vòng lặp tiếp theo
+        tu = -tu;
+    }
+
+    return pi * 4.0; // Nhân với 4 để xấp xỉ giá trị Pi
+}
+
+int main() {
+    int n;
+    cout << "Nhập n: ";
+    cin >> n;
+    cout << "Giá trị xấp xỉ của Pi: " << sopi(n) << endl;
+    return 0;
+}
