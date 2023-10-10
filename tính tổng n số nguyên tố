@@ -1,0 +1,37 @@
+Nhập số nguyên n sao cho 0 < n ≤ 50 (nhập đến khi nào thỏa điều kiện thì dừng nhập), nếu n không thỏa điều kiện thì nhập lại. Xuất ra màn hình tổng n số nguyên tố đầu tiên.
+
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+bool isPrime(int num) {
+    if (num <= 1) return false;
+    if (num <= 3) return true;
+    if (num % 2 == 0 || num % 3 == 0) return false;
+    
+    for (int i = 5; i * i <= num; i += 6) {
+        if (num % i == 0 || num % (i + 2) == 0) return false;
+    }
+    
+    return true;
+}
+
+int main() {
+	int n;
+	cin>>n;
+		 while ( n <= 0 || n > 50) {
+       cout<<"Gia tri vua nhap la "<<n<<", khong hop le. Vui long nhap lai."<<endl;
+		cin >> n;
+    }
+    int sum = 0;
+	int count = 0;
+	int num = 2;
+ while (count < n) {
+        if (isPrime(num)) {
+            sum += num;
+            count++;
+        }
+        num++;
+    }
+	cout << "Tong " << n << " so nguyen to dau tien la: " << sum << endl;
+}
