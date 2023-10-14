@@ -1,0 +1,25 @@
+INPUT
+Một đống số nguyên dương. Input tận cùng bằng số 0 báo hiệu kết thúc input
+
+ràng buộc: ít nhất sẽ có 01 số nguyên dương được nhập, giá trị mỗi số nguyên dương không quá 2 tỷ.
+
+OUTPUT
+Số lớn nhất trong dãy số trên
+
+#include <iostream>
+using namespace std;
+
+int largest_input (){
+   int number;
+    cin >> number;
+
+    if (number == 0) {
+        return 0;
+    }
+
+    int maxInRest = largest_input();
+    return (number > maxInRest) ? number : maxInRest;
+}
+int main(){
+	cout<< largest_input();
+}
