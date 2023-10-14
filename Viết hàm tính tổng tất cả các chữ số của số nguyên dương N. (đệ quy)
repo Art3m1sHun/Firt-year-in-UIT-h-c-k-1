@@ -1,0 +1,19 @@
+using namespace std;
+void input(int &n) {
+    cin >> n;
+}
+
+int sum(int n, int &s) {
+    if (n == 0) return s;
+    int du = n % 10;
+    int chia = n / 10;
+    s += du;
+    return sum(chia, s);
+}
+
+int main() {
+    int n, s=0;
+    input(n);
+    sum(n, s);
+    cout << s;
+}
