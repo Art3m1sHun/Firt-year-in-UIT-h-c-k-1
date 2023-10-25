@@ -1,0 +1,46 @@
+Viết hàm tính tổng tất cả các ước số nguyên tố chung của 2 số nguyên dương N và M. Nếu không có ước nguyên tố chung nào thì trả về -1
+
+bool isPrime(int n) {
+    if (n <= 1) {
+        return false;
+    }
+    if (n <= 3) {
+        return true;
+    }
+    if (n % 2 == 0 || n % 3 == 0) {
+        return false;
+    }
+
+    int limit = sqrt(n);
+    for (int i = 5; i <= limit; i += 6) {
+        if (n % i == 0 || n % (i + 2) == 0) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+long long sum_common_prime(int m, int n) {
+    long long sum = 0;
+
+    if (n>m) 
+    	swap(n,m);
+    int limit=sqrt(n);
+    for (int i = 2; i <= limit; i++) { // cho i chạy đến căn n, bởi vì nếu i là 1 ước của n thì n div i cũng là một ước của n ( ví dụ cho n = 15, căn n = 3,8...., nếu i tiến đến 3 thì 3 và n div i = 5 cũng là một ước của n
+        if (n % i == 0) {                                                                                                       nếu i = 4 thì n không chia hết cho i thì i không là ước của n và n div i cũng không là ước
+            if (m%i==0 && isPrime(i))                                                                                           nếu i = 5 thi n chia hết cho i, n div i = 3 cũng là ước của i nên sẽ bị lặp với i = 3, vậy nên chạy đến căn n là tối ưu được thuật toán
+                sum += i;
+            if (m%(n/i)==0 &&isPrime(n/i)) 
+                sum += n/i;
+        }
+    }
+    if(m%(n/limit)==0&& limit*limit==n) // kiểm tra nếu là số chính phương thì sẽ trừ đi căn n vì lặp lại 2 lần
+    	sum=sum-limit;
+    if (m%n==0&&isPrime(n)) // kiểm tra nếu n là ước của m và n cũng là số nguyên tố thì thõa mãn điều kiện
+    	sum+=n;
+    if (sum == 0) {
+        return -1;
+    }
+    return sum;
+}
