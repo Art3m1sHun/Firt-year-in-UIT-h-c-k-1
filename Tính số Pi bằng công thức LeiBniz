@@ -5,26 +5,25 @@ Tính số Pi bằng công thức LeiBniz
 
 using namespace std;
 
-double sopi(int n) {
-    double pi = 0;
-    double tu = 1.0; // Ban đầu, giá trị của (-1)^0 là 1
-    double mau = 0;
-
-    for (int i = 0; i <= n; i++) {
-        mau = (2.0 * i) + 1.0;
-        pi += (tu / mau);
-
-        // Đảo dấu của tu cho vòng lặp tiếp theo
-        tu = -tu;
-    }
-
-    return pi * 4.0; // Nhân với 4 để xấp xỉ giá trị Pi
+double F(double x, int n) {
+	int a;
+	if (n % 2 == 0)
+		a = 1;
+	else a = -1;
+	float nhap = 1;
+	for (int i = 1; i <= 2 * n + 1; i++) {
+		nhap = nhap * x / i;
+	}
+	return a * nhap;
 }
 
 int main() {
-    int n;
-    cout << "Nhập n: ";
-    cin >> n;
-    cout << "Giá trị xấp xỉ của Pi: " << sopi(n) << endl;
-    return 0;
-}
+	double x, s = 0;
+	cin >> x;
+	int n = 0;
+	while (abs(F(x, n)) > 0.00001) {
+		s += F(x, n);
+		n++;
+	}
+	cout << setprecision(4) << fixed << s;
+	return 0;
