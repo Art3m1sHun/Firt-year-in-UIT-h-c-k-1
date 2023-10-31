@@ -1,0 +1,61 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int m, n, l, k;
+    cout << "Nhap so hang m cua ma tran A: ";
+    cin >> m;
+    cout << "Nhap so cot n cua ma tran A: ";
+    cin >> n;
+
+    // Khai báo ma trận A
+    float A[100][100];
+
+    cout << "Nhap cac phan tu cua ma tran A:" << endl;
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            cin >> A[i][j];
+        }
+    }
+
+    cout << "Nhap so hang l cua ma tran B (l = " << m << "): ";
+    cin >> l;
+    cout << "Nhap so cot k cua ma tran B (k = " << n << "): ";
+    cin >> k;
+
+    // Kiểm tra kích thước của ma trận B
+    if (l != m || k != n) {
+        cout << "Kich thuoc ma tran B khong hop le." << endl;
+        return 1;
+    }
+
+    // Khai báo ma trận B
+    float B[100][100];
+
+    cout << "Nhap cac phan tu cua ma tran B:" << endl;
+    for (int i = 0; i < l; i++) {
+        for (int j = 0; j < k; j++) {
+            cin >> B[i][j];
+        }
+    }
+
+    // Tính tổng của hai ma trận A và B
+    float C[100][100];
+
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            C[i][j] = A[i][j] + B[i][j];
+        }
+    }
+
+    // In ma trận tổng C
+    cout << "Ma tran tong C = A + B:" << endl;
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << C[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
