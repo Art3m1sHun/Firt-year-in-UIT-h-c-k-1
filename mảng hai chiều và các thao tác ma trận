@@ -1,0 +1,100 @@
+#include <iostream>
+#define MAX 100
+using namespace std;
+void Input(int a[MAX][MAX], int &dong, int &cot){
+	cin>>dong>>cot;
+	for (int i = 0; i < dong; i++){
+		for (int j = 0; j < dong; j++)
+		cin>>a[i][j];
+	}
+}
+
+void cheochinh(int a[MAX][MAX], int dong, int cot){
+	for (int i = 0; i < dong; i++){
+		for (int j = 0; j < dong; j++) {
+			if (i == j) cout<<a[i][j]<<" ";}
+	}
+	
+	/*Cach 2:
+	for(int i = 0; i < dong; i++)
+		cout<<a[i][i];*/
+}
+
+void cheophu(int a[MAX][MAX], int dong, int cot){
+	for(int i = 0; i < dong; i++)
+		cout<<a[i][dong - 1 - i];
+	}
+
+void nuatrencheochinh(int a[MAX][MAX], int dong, int cot){
+		for(int i = 0; i < dong; i++){
+			for(int j = 0; j < dong; j++){
+				if (i <= j) cout<<a[i][j]<<" ";
+			}
+		}
+}
+
+void nuaduoicheochinh(int a[MAX][MAX], int dong, int cot){
+		for(int i = 0; i < dong; i++){
+			for(int j = 0; j < dong; j++){
+				if (j <= i) cout<<a[i][j]<<" ";
+			}
+		}
+}
+
+bool doixungquacheochinh(int a[MAX][MAX], int dong, int cot) {
+	for(int i = 0; i < dong; i++){
+			for(int j = 0; j < dong; j++){
+				if (a[i][j] != a[j][i]) return false;
+				return true;
+				}
+	}
+}
+
+int tinhtong(int a[MAX][MAX], int dong, int cot){
+	for (int i = 0; i < dong; i++) {
+		int sum = 0;
+		for (int j = 0; j < cot; j++) sum += a[i][j];
+		cout<<"dong "<<i<<" : "<<sum;
+		cout<<endl;
+	}
+	
+	for (int j = 0; j < cot; j++) {
+		int sum1 = 0;
+		for (int i = 0; i < dong; i++) sum1 += a[i][j];
+		cout<<"cot "<<j<<" : "<<sum1;
+		cout<<endl;
+	}
+}
+
+int nho(int a[MAX][MAX], int dong, int cot){
+	for (int i = 0; i < dong; i++) {
+		int Min = a[i][0];
+		for (int j = 1; j < cot; j++) if (Min > a[i][j]) Min = a[i][j];
+		cout<<"dong min "<<i<<" : "<<Min;
+		cout<<endl;
+	}
+}
+
+int max(int a[MAX][MAX], int dong, int cot){
+	for (int i = 0; i < dong; i++) {
+		int Max = a[i][0];
+		for (int j = 1; j < cot; j++) if (Max < a[i][j]) Min = a[i][j];
+		cout<<"dong max "<<i<<" : "<<Min;
+		cout<<endl;
+	}
+}
+
+
+int main() {
+	int dong, cot;
+	int a[MAX][MAX];
+	Input(a,dong,cot);
+	nuatrencheochinh(a,dong,cot);
+	nuaduoicheochinh(a,dong,cot);
+	if (doixungquacheochinh(a,dong,cot)) cout<<"doi xung";
+	else cout<<"khong";
+	tinhtong(a,dong,cot);
+	nho(a,dong,cot);
+	
+	return 0;
+}
