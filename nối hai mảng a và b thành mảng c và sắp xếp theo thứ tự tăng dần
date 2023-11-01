@@ -1,0 +1,67 @@
+#include <iostream>
+
+int* mergeSortedArrays(const int* a, int m, const int* b, int n, int& resultSize) {
+    int* merged = new int[m + n]; // Tạo mảng động để chứa kết quả
+    int i = 0, j = 0, k = 0;
+
+    while (i < m && j < n) {
+        if (a[i] < b[j]) {
+            merged[k] = a[i];
+            i++;
+        } else {
+            merged[k] = b[j];
+            j++;
+        }
+        k++;
+    }
+
+    while (i < m) {
+        merged[k] = a[i];
+        i++;
+        k++;
+    }
+
+    while (j < n) {
+        merged[k] = b[j];
+        j++;
+        k++;
+    }
+
+    resultSize = m + n; // Cập nhật kích thước của mảng kết quả
+    return merged;
+}
+
+int main() {
+    int m, n;
+    std::cout << "Nhập số phần tử của mảng a: ";
+    std::cin >> m;
+
+    int* a = new int[m];
+    std::cout << "Nhập mảng a đã sắp xếp theo thứ tự tăng dần:\n";
+    for (int i = 0; i < m; i++) {
+        std::cin >> a[i];
+    }
+
+    std::cout << "Nhập số phần tử của mảng b: ";
+    std::cin >> n;
+
+    int* b = new int[n];
+    std::cout << "Nhập mảng b đã sắp xếp theo thứ tự tăng dần:\n";
+    for (int i = 0; i < n; i++) {
+        std::cin >> b[i];
+    }
+
+    int resultSize;
+    int* c = mergeSortedArrays(a, m, b, n, resultSize);
+
+    std::cout << "Mảng c sau khi gộp và duy trì thứ tự tăng dần:\n";
+    for (int i = 0; i < resultSize; i++) {
+        std::cout << c[i] << " ";
+    }
+
+    delete[] a;
+    delete[] b;
+    delete[] c;
+
+    return 0;
+}
