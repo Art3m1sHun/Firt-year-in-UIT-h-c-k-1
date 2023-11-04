@@ -1,0 +1,50 @@
+#include <iostream>
+#define MAX 100
+using namespace std;
+
+void inputMatrix(float arr[MAX][MAX], int &rows, int &cols) {
+    cin >> rows >> cols;
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            cin >> arr[i][j];
+        }
+    }
+}
+
+void multiplyMatrices(float arr1[MAX][MAX], int rows1, int cols1, float arr2[MAX][MAX], int rows2, int cols2, float result[MAX][MAX]) {
+    if (cols1 != rows2) {
+        return;
+    }
+
+    for (int i = 0; i < rows1; i++) {
+        for (int j = 0; j < cols2; j++) {
+            result[i][j] = 0;
+            for (int k = 0; k < cols1; k++) {
+                result[i][j] += arr1[i][k] * arr2[k][j];
+            }
+        }
+    }
+}
+
+int main() {
+    int rows1, cols1, rows2, cols2;
+    float arr1[MAX][MAX], arr2[MAX][MAX], result[MAX][MAX];
+
+    inputMatrix(arr1, rows1, cols1);
+    inputMatrix(arr2, rows2, cols2);
+
+    if (cols1 != rows2) {
+        return 0;
+    }
+
+    multiplyMatrices(arr1, rows1, cols1, arr2, rows2, cols2, result);
+
+    for (int i = 0; i < rows1; i++) {
+        for (int j = 0; j < cols2; j++) {
+            cout << result[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
