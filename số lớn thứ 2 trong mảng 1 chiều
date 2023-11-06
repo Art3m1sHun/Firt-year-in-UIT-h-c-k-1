@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    int mang[100];
+    for (int i = 0; i < n; ++i) {
+        cin >> mang[i];
+    }
+    int max1 = mang[0];
+    int max2 = mang[1]; 
+    if (max2 > max1) {
+        int temp = max1;
+        max1 = max2;
+        max2 = temp;
+    }
+    for (int i = 2; i < n; ++i) {
+        if (mang[i] > max1) {
+            max2 = max1;
+            max1 = mang[i];
+        } else if (mang[i] > max2 && mang[i] != max1) {
+            max2 = mang[i];
+        }
+    }
+
+    if (max2 == max1) {
+        cout << "0" << std::endl;
+    } else {
+        cout<< max2 << std::endl;
+    }
+    return 0;
+}
