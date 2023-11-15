@@ -1,0 +1,69 @@
+#include <iostream>
+#include <string.h>
+using namespace std;
+#define MAX 300
+
+  
+int myStrlen(char s[], int k){ //đếm độ dài của chuỗi
+	int length = 0;
+	for(int i = k; s[i] != '\0'; ++i) {
+		length++;
+	}
+	return length;
+}
+
+
+
+void DemKyTu(char s[]) { // đếm số kí tự trong chuỗi
+    int length = myStrlen(s,0); // tính độ dài của chuỗi
+
+    if (length == 0) { // nếu như độ dài chuỗi bằng 0 thì là chuỗi rỗng
+        cout << "Chuoi rong." << endl;
+        return;
+    }
+    for (int i = 0; i < length; ++i) { // kiểm tra kí tự trong chuỗi ấy đã được đêm chưa
+        bool daDem = false;
+
+        for (int j = 0; j < i; ++j) {
+            if (s[i] == s[j]) {
+                daDem = true;
+                break;
+            }
+        }
+
+        if (!daDem) { // nếu biên đã đếm là false thì kí tự đó chưa được đêm - hàm đếm số kí tự.
+            int count = 1;
+
+            for (int k = i + 1; k < length; ++k) {
+                if (s[i] == s[k]) {
+                    ++count;
+                }
+            }
+
+            cout << s[i] << ": " << count << endl;
+        }
+    }
+}
+
+
+int myStrcmp(char s1[MAX], char s2[MAX]){ // hàm kiểm tra chuỗi s2 có nằm trong chuỗi s1 không
+    int i = 0;
+    while (s1[i] != '\0' || s2[i] != '\0') {
+    	if (s1[i] != s2[i]) return 1;
+    	else return 0;
+    }
+}
+
+
+int main()
+{
+	char s[MAX];
+	//gets(s);	//Nhap chuoi s	
+	cin.getline(s,MAX);
+	if (myStrcmp(s, "") == 0)
+		cout << "Chuoi rong." << endl;
+	else
+		DemKyTu(s);
+
+	return 0;
+}
