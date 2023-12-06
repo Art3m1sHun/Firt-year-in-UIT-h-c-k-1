@@ -1,0 +1,41 @@
+#include <iostream>
+#define MAX 100
+using namespace std;
+
+void nhapmang(float **s, int m, int n){
+    for(int i = 0; i < m; i++){
+        for(int j = 0; j < n; j++){
+            cin >> s[i][j];
+        }
+    }
+}
+
+void timsolonnhat(float **s, int m, int n){
+    for(int i = 0; i < n; i++){
+        float max = s[0][i];
+        for(int j = 0; j < m; j++){
+            if(max < s[j][i]) max = s[j][i];
+        }
+        cout << "Gia tri lon nhat tren cot " << i << " la: " << max << endl;
+    }
+}
+
+int main() {
+    int m, n;
+    float **s = new float *[MAX];
+    for (int i = 0; i < MAX; i++) {
+        s[i] = new float[MAX];
+    }
+
+    cin >> m >> n;
+    nhapmang(s, m, n);
+    timsolonnhat(s, m, n);
+
+    // Deallocate memory
+    for (int i = 0; i < MAX; i++) {
+        delete[] s[i];
+    }
+    delete[] s;
+
+    return 0;
+}
