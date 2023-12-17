@@ -1,0 +1,58 @@
+#include <iostream>
+#define MAXN 100
+using namespace std;
+
+struct PhanSo {
+    int tuso;
+    int mauso;
+};
+
+int gcd(int a, int b) { // tìm ước chung lớn nhất của a và b
+    while (b != 0) {
+        int temp = a % b;
+        a = b;
+        b = temp;
+    }
+    return a;
+}
+
+void Nhap(PhanSo a[], int &n) { //nhập mảng phân số 1 chiều bao gồm tử và mẫu
+	do{
+		cin >> n;
+	}while (n < 0 || n > MAXN);
+    for (int i = 0; i < n; i++) {
+        cin >> a[i].tuso >> a[i].mauso;
+    }
+}
+
+void Xuat(PhanSo a[], int &n) { //xuất phân số
+    for (int i = 0; i < n; i++) {
+        if (a[i].mauso == 0) { //trường hợp nếu mẫu số bằng 0
+            cout << "Khong thoa yeu cau bai toan";
+            cout<<endl;
+        } else {
+            int gcd_val = gcd(abs(a[i].tuso), abs(a[i].mauso)); //tìm ước chung lớn nhất của tử và mẫu
+            a[i].tuso /= gcd_val;
+            a[i].mauso /= gcd_val;
+            if (a[i].mauso < 0) { //nếu mẫu số nhỏ hơn 0 thì đổi dấu tử số và mẫu số
+                a[i].tuso = -a[i].tuso;
+                a[i].mauso = -a[i].mauso;
+            }
+            if (a[i].mauso == 1) { //nếu mẫu số bằng 1 thì xuất tử số
+                cout << a[i].tuso;
+                cout<<endl;
+            } else { //xuất dạng kí hiệu a/b
+                cout << a[i].tuso << "/" << a[i].mauso << " ";
+                cout<<endl;
+            }
+        }
+    }
+}
+
+int main() {
+    PhanSo a[MAXN];
+    int n;
+    Nhap(a, n);
+    Xuat(a, n);
+    return 0;
+}
