@@ -1,0 +1,34 @@
+
+struct PhanSo{
+	int tuso;
+	int mauso;
+};
+void Nhap(PhanSo &a){
+	cin >> a.tuso >> a.mauso;
+}
+
+PhanSo Nhap(){
+	PhanSo b;
+	cin >> b.tuso >> b.mauso;
+	return b;
+}
+int SoSanh(PhanSo a, PhanSo b){
+    float phanSoA = (float) a.tuso / a.mauso;
+    float phanSoB = (float) b.tuso / b.mauso;
+    if (phanSoA == phanSoB) return 0;
+    if (phanSoA > phanSoB) return 1;
+    return -1;
+}
+int main() {
+    PhanSo a, b;
+    Nhap(a);
+    b = Nhap();
+    int kq = SoSanh(a, b);
+    if (kq == 0)
+        std::cout << "Hai phan so bang nhau.";
+    else if (kq > 0)
+        std::cout << "Phan so thu nhat LON hon phan so thu hai.";
+    else
+        std::cout << "Phan so thu nhat NHO hon phan so thu hai.";
+    return 0;
+}
