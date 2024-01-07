@@ -1,0 +1,42 @@
+#include <iostream>
+#define MAXN 100
+
+using namespace std;
+
+void Nhap(int arr[][MAXN], int &m, int &n){
+	cin >> m >> n;
+	for(int i = 0; i < m; i++){
+		for(int j = 0; j < n; j++){
+			cin >> arr[i][j];
+		}
+	}
+}
+
+int Min(int arr[][MAXN], int m, int n){
+	int min = arr[0][0];
+	for(int i = 0; i < m; i++){
+		for(int j = 0; j < n; j++){
+			if(arr[i][j] < min) min = arr[i][j];
+		}
+	}
+	return min;
+}
+
+int sothung(int arr[][MAXN], int m, int n){
+	int min = Min(arr,m,n);
+	int s = 0;
+	for(int i = 0; i < m; i++){
+		for(int j = 0; j < n; j++){
+			if(arr[i][j] > min) s += (arr[i][j] - min);
+		}
+	}
+	return s;
+}
+
+int main(){
+	int arr[MAXN][MAXN];
+	int m,n;
+	Nhap(arr,m,n);
+	cout<<sothung(arr,m,n);
+	return 0;
+}
